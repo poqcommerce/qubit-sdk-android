@@ -39,14 +39,14 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "Send interaction event button clicked");
         // Example of sending event
         QubitSDK.tracker().sendEvent(
-            QBEvents.fromJsonString(EVENT_TYPE_INTERACTION, "{ \"type\" : \"buttonInteraction-ao\" }"));
+            QBEvents.fromJsonString(EVENT_TYPE_INTERACTION, "{ \"type\" : \"buttonClicked\", \"name\": \"testButton\" }"));
       }
     });
 
     findViewById(R.id.send_20_events_button).setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        Log.i(TAG, "Send 20 events button clicked");
+        Log.i(TAG, "Send 10 events button clicked");
 
         for (int i = 0; i < 20; i++) {
           QubitSDK.tracker().sendEvent(QBEvents.fromJsonString(EVENT_TYPE_INTERACTION, "{ \"type\" : \"buttonInteraction-" + i + "\" }"));
