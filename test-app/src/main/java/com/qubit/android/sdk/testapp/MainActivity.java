@@ -60,36 +60,36 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "Send product event button clicked");
         // Example of sending event
         QubitSDK.tracker().sendEvent(
-                QBEvents.fromJsonString(EVENT_TYPE_PRODUCT, "{\"action\":\"detail\",\"eventType\":\"detail\",\"product\":{\"color\":\"BLACK\",\"images\":[\"http://media.unionfashion.com/wcsstore/site/images/catalog/TS35B32MBLK_Large_F_1.jpg\"],\"name\":\"Velvet Floral Print Plunge Dress\",\"onSale\":false,\"originalPrice\":{\"currency\":\"GBP\",\"value\":49},\"price\":{\"currency\":\"GBP\",\"value\":49},\"productId\":\"29352808\",\"sku\":\"TS35B32MBLK\",\"stock\":0,\"url\":\"http://www.unionfashion.com/en/unionfashion/product/velvet-floral-print-plunge-dress-6920973\"}}"));
+            QBEvents.fromJsonString(EVENT_TYPE_PRODUCT, "{\"action\":\"detail\",\"eventType\":\"detail\",\"product\":{\"color\":\"BLACK\",\"images\":[\"http://media.unionfashion.com/wcsstore/site/images/catalog/TS35B32MBLK_Large_F_1.jpg\"],\"name\":\"Velvet Floral Print Plunge Dress\",\"onSale\":false,\"originalPrice\":{\"currency\":\"GBP\",\"value\":49},\"price\":{\"currency\":\"GBP\",\"value\":49},\"productId\":\"29352808\",\"sku\":\"TS35B32MBLK\",\"stock\":0,\"url\":\"http://www.unionfashion.com/en/unionfashion/product/velvet-floral-print-plunge-dress-6920973\"}}"));
       }
     });
 
       findViewById(R.id.send_basket_events_button).setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-              Log.i(TAG, "Send basket events button clicked");
-              // ecBasketSummary
-              QubitSDK.tracker().sendEvent(
-                      QBEvents.fromJsonString("ecBasketSummary", "{\"basket\":{\"id\":\"352907769\",\"total\":{\"currency\":\"GBP\",\"value\":53},\"subtotalIncludingTax\":{\"currency\":\"GBP\",\"value\":49},\"quantity\":1}}"));
-              // ecBasketItem
-              QubitSDK.tracker().sendEvent(
-                      QBEvents.fromJsonString("ecBasketItem", "{\"product\":{\"name\":\"Velvet Floral Print Plunge Dress\",\"productId\":\"35B32MBLK\",\"sku\":\"602017001140886\",\"price\":{\"currency\":\"GBP\",\"value\":49},\"originalPrice\":{\"currency\":\"GBP\",\"value\":49},\"category\":[\"Clothing\"],\"categories\":[\"Clothing\"],\"onSale\":false,\"images\":[\"https://media.unionfashion.com/wcsstore/unionfashion/images/catalog/TS35B32MBLK_Small_F_1.jpg\"]},\"basket\":{\"id\":\"352907769\",\"total\":{\"currency\":\"GBP\",\"value\":53},\"subtotalIncludingTax\":{\"currency\":\"GBP\",\"value\":49},\"quantity\":1},\"quantity\":1,\"subtotalIncludingTax\":{\"currency\":\"GBP\",\"value\":49}}"));
-          }
+        @Override
+        public void onClick(View view) {
+          Log.i(TAG, "Send basket events button clicked");
+          // ecBasketSummary
+          QubitSDK.tracker().sendEvent(
+              QBEvents.fromJsonString("ecBasketSummary", "{\"basket\":{\"id\":\"352907769\",\"total\":{\"currency\":\"GBP\",\"value\":53},\"subtotalIncludingTax\":{\"currency\":\"GBP\",\"value\":49},\"quantity\":1}}"));
+          // ecBasketItem
+          QubitSDK.tracker().sendEvent(
+              QBEvents.fromJsonString("ecBasketItem", "{\"product\":{\"name\":\"Velvet Floral Print Plunge Dress\",\"productId\":\"35B32MBLK\",\"sku\":\"602017001140886\",\"price\":{\"currency\":\"GBP\",\"value\":49},\"originalPrice\":{\"currency\":\"GBP\",\"value\":49},\"category\":[\"Clothing\"],\"categories\":[\"Clothing\"],\"onSale\":false,\"images\":[\"https://media.unionfashion.com/wcsstore/unionfashion/images/catalog/TS35B32MBLK_Small_F_1.jpg\"]},\"basket\":{\"id\":\"352907769\",\"total\":{\"currency\":\"GBP\",\"value\":53},\"subtotalIncludingTax\":{\"currency\":\"GBP\",\"value\":49},\"quantity\":1},\"quantity\":1,\"subtotalIncludingTax\":{\"currency\":\"GBP\",\"value\":49}}"));
+    }
       });
 
 
       findViewById(R.id.send_transaction_events_button).setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-              Log.i(TAG, "Send transaction events button clicked");
-              String TID = "ABCD";
-              // ecBasketTransactionSummary
-              QubitSDK.tracker().sendEvent(
-                      QBEvents.fromJsonString("ecBasketTransactionSummary", "{\"basket\":{\"total\":{\"currency\":\"GBP\",\"value\":53},\"subtotalIncludingTax\":{\"currency\":\"GBP\",\"value\":49}}, \"transaction\": {\"id\": \"" + TID + "\"}}"));
-              // ecBasketItemTransaction
-              QubitSDK.tracker().sendEvent(
-                      QBEvents.fromJsonString("ecBasketItemTransaction", "{\"product\":{\"name\":\"Velvet Floral Print Plunge Dress\",\"productId\":\"35B32MBLK\",\"sku\":\"602017001140886\",\"price\":{\"currency\":\"GBP\",\"value\":49},\"originalPrice\":{\"currency\":\"GBP\",\"value\":49},\"category\":[\"Clothing\"],\"categories\":[\"Clothing\"],\"onSale\":false,\"images\":[\"https://media.unionfashion.com/wcsstore/unionfashion/images/catalog/TS35B32MBLK_Small_F_1.jpg\"]},\"basket\":{\"total\":{\"currency\":\"GBP\",\"value\":53},\"subtotalIncludingTax\":{\"currency\":\"GBP\",\"value\":49}},\"quantity\":1,\"transaction\":{\"id\":\"" + TID + "\"},\"subtotal\":{\"currency\":\"GBP\",\"value\":53}}"));
-          }
+        @Override
+        public void onClick(View view) {
+          Log.i(TAG, "Send transaction events button clicked");
+          String TID = "ABCD";
+          // ecBasketTransactionSummary
+          QubitSDK.tracker().sendEvent(
+              QBEvents.fromJsonString("ecBasketTransactionSummary", "{\"basket\":{\"total\":{\"currency\":\"GBP\",\"value\":53},\"subtotalIncludingTax\":{\"currency\":\"GBP\",\"value\":49}}, \"transaction\": {\"id\": \"" + TID + "\"}}"));
+          // ecBasketItemTransaction
+          QubitSDK.tracker().sendEvent(
+              QBEvents.fromJsonString("ecBasketItemTransaction", "{\"product\":{\"name\":\"Velvet Floral Print Plunge Dress\",\"productId\":\"35B32MBLK\",\"sku\":\"602017001140886\",\"price\":{\"currency\":\"GBP\",\"value\":49},\"originalPrice\":{\"currency\":\"GBP\",\"value\":49},\"category\":[\"Clothing\"],\"categories\":[\"Clothing\"],\"onSale\":false,\"images\":[\"https://media.unionfashion.com/wcsstore/unionfashion/images/catalog/TS35B32MBLK_Small_F_1.jpg\"]},\"basket\":{\"total\":{\"currency\":\"GBP\",\"value\":53},\"subtotalIncludingTax\":{\"currency\":\"GBP\",\"value\":49}},\"quantity\":1,\"transaction\":{\"id\":\"" + TID + "\"},\"subtotal\":{\"currency\":\"GBP\",\"value\":53}}"));
+        }
       });
 
 
