@@ -38,19 +38,23 @@ public class SDK {
   private LookupServiceImpl lookupService;
   private SessionServiceImpl sessionService;
   private EventTrackerImpl eventTracker;
+  public String deviceId;
+  public String trackingId;
 
   public SDK(Context appContext, String trackingId) {
     this.networkStateService = new NetworkStateServiceImpl(appContext);
+
 
     ConfigurationRepository configurationRepository = new ConfigurationRepositoryImpl(appContext);
     ConfigurationConnectorBuilder configurationConnectorBuilder = new ConfigurationConnectorBuilderImpl(trackingId);
     this.configurationService =
         new ConfigurationServiceImpl(networkStateService, configurationRepository, configurationConnectorBuilder);
 
-    String deviceId = new SecureAndroidIdDeviceIdProvider(appContext).getDeviceId();
+    this.trackingId = trackingId;
+    this.deviceId = new SecureAndroidIdDeviceIdProvider(appContext).getDeviceId();
 
     LookupRepository lookupRepository = new LookupRepositoryImpl(appContext);
-    LookupConnectorBuilder lookupConnectorBuilder = new LookupConnectorBuilderImpl(trackingId, deviceId);
+    LookupConnectorBuilder lookupConnectorBuilder = new LookupConnectorBuilderImpl(trackingId, this.deviceId);
     lookupService = new LookupServiceImpl(configurationService, networkStateService,
         lookupRepository, lookupConnectorBuilder);
 
@@ -66,7 +70,7 @@ public class SDK {
         new DatabaseInitializer(appContext, SQLiteEventsRepository.tableInitializer()).initDatabaseAsync();
     EventsRepository eventsRepository = new SQLiteEventsRepository(databaseFuture);
     EventsRestAPIConnectorBuilder eventsRestAPIConnectorBuilder = new EventsRestAPIConnectorBuilderImpl(trackingId);
-    this.eventTracker = new EventTrackerImpl(trackingId, deviceId,
+    this.eventTracker = new EventTrackerImpl(trackingId, this.deviceId,
         configurationService, networkStateService, sessionService, lookupService,
         eventsRepository, eventsRestAPIConnectorBuilder);
   }
