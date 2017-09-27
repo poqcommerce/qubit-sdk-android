@@ -97,6 +97,15 @@ public final class QBEvents {
     return new QBEventImpl(type, GSON.toJsonTree(map).getAsJsonObject());
   }
 
+  public static QBGenericEventBuilder ofType(final String type) {
+    validateType(type);
+    return new QBGenericEventBuilder(type);
+  }
+
+  public static ECEvents ec() {
+    return new ECEvents();
+  }
+
   private static void validateEventBody(String parameterName, Object parameter) {
     if (parameter == null) {
       throw new NullPointerException(parameterName + " parameter cannot be null");

@@ -33,13 +33,13 @@ import java.util.concurrent.Future;
 
 public class SDK {
 
+  public String deviceId;
+  public String trackingId;
   private NetworkStateServiceImpl networkStateService;
   private ConfigurationServiceImpl configurationService;
   private LookupServiceImpl lookupService;
   private SessionServiceImpl sessionService;
   private EventTrackerImpl eventTracker;
-  public String deviceId;
-  public String trackingId;
 
   public SDK(Context appContext, String trackingId) {
     this.networkStateService = new NetworkStateServiceImpl(appContext);
